@@ -204,3 +204,56 @@ Doctor Doctor::removeDoctor(int id)
   }
   return Doctor();
 }
+
+Doctor Doctor::updateDoctor(int id, Doctor d)
+{
+  ifstream file;
+  file.open(DoctorPath);
+  if (file.is_open())
+  {
+    ofstream temp;
+    temp.open("temp.txt");
+    if (temp.is_open())
+    {
+      string line;
+      while (getline(file, line))
+      {
+        string idStr = to_string(id);
+        if (line.find(idStr) == string::npos)
+        {
+          temp << line << endl;
+        }
+        else
+        {
+          temp << d.getId()
+               << "|"
+               << d.getName()
+               << "|"
+               << d.getSpecialization()
+               << "|"
+               << d.getExperience()
+               << "|"
+               << d.getPhone()
+               << "|"
+               << d.getEmail()
+               << "|"
+               << d.getAddress()
+               << endl;
+        }
+      }
+      temp.close();
+      file.close();
+      remove("Doctors.txt");
+      rename("temp.txt", "Doctors.txt");
+    }
+    else
+    {
+      cout << "Unable to open temp file" << endl;
+    }
+  }
+  else
+  {
+    cout << "Unable to open file" << endl;
+  }
+  return Doctor();
+}
