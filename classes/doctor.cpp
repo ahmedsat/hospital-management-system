@@ -388,3 +388,14 @@ vector<Doctor> Doctor::getAllDoctors()
   }
   return doctors;
 }
+
+void Doctor::printDoctor(Doctor d)
+{
+  cout << "ID: " << d.getId() << endl;
+  cout << "Name: " << d.getName() << endl;
+  cout << "Specialization: " << d.getSpecialization() << endl;
+  cout << "Experience: " << d.getExperience() << endl;
+  cout << "Phone: " << d.getPhone() << endl;
+  cout << "Email: " << d.getEmail() << endl;
+  cout << "Address: " << d.getAddress() << endl;
+}
