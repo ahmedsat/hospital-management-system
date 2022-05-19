@@ -426,7 +426,8 @@ bool Doctor::isDoctorExist(int id)
     while (getline(file, line))
     {
       string idStr = to_string(id);
-      if (line.find(idStr) != string::npos)
+      string lineId = line.substr(0, line.find('|'));
+      if (idStr == lineId)
       {
         return true;
       }
