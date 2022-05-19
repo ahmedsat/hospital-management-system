@@ -168,3 +168,39 @@ Doctor Doctor::addDoctor(Doctor d)
   }
   return d;
 }
+
+Doctor Doctor::removeDoctor(int id)
+{
+  ifstream file;
+  file.open(DoctorPath);
+  if (file.is_open())
+  {
+    ofstream temp;
+    temp.open("temp.txt");
+    if (temp.is_open())
+    {
+      string line;
+      while (getline(file, line))
+      {
+        string idStr = to_string(id);
+        if (line.find(idStr) == string::npos)
+        {
+          temp << line << endl;
+        }
+      }
+      temp.close();
+      file.close();
+      remove("Doctors.txt");
+      rename("temp.txt", "Doctors.txt");
+    }
+    else
+    {
+      cout << "Unable to open temp file" << endl;
+    }
+  }
+  else
+  {
+    cout << "Unable to open file" << endl;
+  }
+  return Doctor();
+}
