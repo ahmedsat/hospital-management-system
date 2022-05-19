@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 using namespace std;
 
@@ -136,4 +137,34 @@ void Doctor::setEmail(string email)
 void Doctor::setAddress(string address)
 {
   this->address = address;
+}
+
+Doctor Doctor::addDoctor(Doctor d)
+{
+  ofstream file;
+  file.open(DoctorPath, ios::app);
+  if (file.is_open())
+  {
+    file
+        << d.getId()
+        << "|"
+        << d.getName()
+        << "|"
+        << d.getSpecialization()
+        << "|"
+        << d.getExperience()
+        << "|"
+        << d.getPhone()
+        << "|"
+        << d.getEmail()
+        << "|"
+        << d.getAddress()
+        << endl;
+    file.close();
+  }
+  else
+  {
+    cout << "Unable to open file" << endl;
+  }
+  return d;
 }
