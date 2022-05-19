@@ -17,6 +17,18 @@ public:
   void mainMenu();
   void doctorsMenu();
   void patientsMenu();
+  void addDoctor();
+  // void removeDoctor();
+  // void updateDoctor();
+  // void searchDoctor();
+  // void printDoctor();
+  // void printAllDoctors();
+  // void addPatient();
+  // void removePatient();
+  // void updatePatient();
+  // void searchPatient();
+  // void printPatient();
+  // void printAllPatients();
 };
 
 Controller::Controller()
@@ -115,7 +127,7 @@ void Controller::doctorsMenu()
     switch (input)
     {
     case 1:
-      message = "You have selected to add a doctor";
+      addDoctor();
       break;
     case 2:
       message = "You have selected to remove a doctor";
@@ -193,4 +205,212 @@ void Controller::patientsMenu()
       message = "Invalid selection";
     }
   } while (input != 0);
+}
+
+void Controller::addDoctor()
+{
+  clearScreen();
+  Doctor d;
+  int id;
+  string name, specialization, experience, phone, email, address;
+  do
+  {
+    cout << message << endl;
+    cout << "Enter doctor id: ";
+    cin >> id;
+    if (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      clearScreen();
+      message = "Invalid input, please try again";
+      continue;
+    }
+    if (id <= 0)
+    {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      clearScreen();
+      message = "Id must be an integer greater than 0";
+      continue;
+    }
+    if (d.isDoctorExist(id))
+    {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      clearScreen();
+      message = "Doctor id already in use";
+      continue;
+    }
+    cin.clear();
+    message = "";
+    break;
+  } while (true);
+
+  do
+  {
+    cout << message << endl;
+    cout << "Enter doctor name: ";
+    cin >> name;
+    if (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      clearScreen();
+      message = "Invalid input, please try again";
+      continue;
+    }
+    if (name.empty())
+    {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      clearScreen();
+      message = "Name cannot be empty";
+      continue;
+    }
+    cin.clear();
+    message = "";
+    break;
+  } while (true);
+
+  do
+  {
+    cout << message << endl;
+    cout << "Enter doctor specialization: ";
+    cin >> specialization;
+    if (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      clearScreen();
+      message = "Invalid input, please try again";
+      continue;
+    }
+    if (specialization.empty())
+    {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      clearScreen();
+      message = "Specialization cannot be empty";
+      continue;
+    }
+    cin.clear();
+    message = "";
+    break;
+  } while (true);
+
+  do
+  {
+    cout << message << endl;
+    cout << "Enter doctor experience: ";
+    cin >> experience;
+    if (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      clearScreen();
+      message = "Invalid input, please try again";
+      continue;
+    }
+    if (experience.empty())
+    {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      clearScreen();
+      message = "Experience cannot be empty";
+      continue;
+    }
+    cin.clear();
+    message = "";
+    break;
+  } while (true);
+
+  do
+  {
+    cout << message << endl;
+    cout << "Enter doctor phone: ";
+    cin >> phone;
+    if (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      clearScreen();
+      message = "Invalid input, please try again";
+      continue;
+    }
+    if (phone.empty())
+    {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      clearScreen();
+      message = "Phone cannot be empty";
+      continue;
+    }
+    cin.clear();
+    message = "";
+    break;
+  } while (true);
+
+  do
+  {
+    cout << message << endl;
+    cout << "Enter doctor email: ";
+    cin >> email;
+    if (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      clearScreen();
+      message = "Invalid input, please try again";
+      continue;
+    }
+    if (email.empty())
+    {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      clearScreen();
+      message = "Email cannot be empty";
+      continue;
+    }
+    cin.clear();
+    message = "";
+    break;
+  } while (true);
+
+  do
+  {
+    cout << message << endl;
+    cout << "Enter doctor address: ";
+    cin >> address;
+    if (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      clearScreen();
+      message = "Invalid input, please try again";
+      continue;
+    }
+    if (address.empty())
+    {
+      cin.clear();
+      cin.ignore(10000, '\n');
+      clearScreen();
+      message = "Address cannot be empty";
+      continue;
+    }
+    cin.clear();
+    message = "";
+    break;
+  } while (true);
+
+  d.setId(id);
+  d.setName(name);
+  d.setSpecialization(specialization);
+  d.setExperience(experience);
+  d.setPhone(phone);
+  d.setEmail(email);
+  d.setAddress(address);
+  d.addDoctor(d);
+  clearScreen();
+  message = "Doctor added successfully";
 }
