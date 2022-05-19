@@ -324,3 +324,67 @@ Doctor Doctor::searchDoctorById(int id)
   }
   return Doctor();
 }
+
+vector<Doctor> Doctor::getAllDoctors()
+{
+  vector<Doctor> doctors;
+  ifstream file;
+  file.open(DoctorPath);
+  if (file.is_open())
+  {
+    string line;
+    while (getline(file, line))
+    {
+      string id, name, specialization, experience, phone, email, address;
+      int i = 0;
+      while (line[i] != '|')
+      {
+        id += line[i];
+        i++;
+      }
+      i++;
+      while (line[i] != '|')
+      {
+        name += line[i];
+        i++;
+      }
+      i++;
+      while (line[i] != '|')
+      {
+        specialization += line[i];
+        i++;
+      }
+      i++;
+      while (line[i] != '|')
+      {
+        experience += line[i];
+        i++;
+      }
+      i++;
+      while (line[i] != '|')
+      {
+        phone += line[i];
+        i++;
+      }
+      i++;
+      while (line[i] != '|')
+      {
+        email += line[i];
+        i++;
+      }
+      i++;
+      while (line[i] != '|')
+      {
+        address += line[i];
+        i++;
+      }
+      Doctor d(stoi(id), name, specialization, experience, phone, email, address);
+      doctors.push_back(d);
+    }
+  }
+  else
+  {
+    cout << "Unable to open file" << endl;
+  }
+  return doctors;
+}
