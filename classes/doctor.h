@@ -42,6 +42,7 @@ public:
   vector<Doctor> getAllDoctors();
   void printDoctor(Doctor);
   void printDoctor(vector<Doctor>);
+  bool isDoctorExist(int);
 };
 
 Doctor::Doctor()
@@ -413,4 +414,27 @@ void Doctor::printDoctor(vector<Doctor> doctors)
     cout << "Email: " << doctors[i].getEmail() << endl;
     cout << "Address: " << doctors[i].getAddress() << endl;
   }
+}
+
+bool Doctor::isDoctorExist(int id)
+{
+  ifstream file;
+  file.open(DoctorPath);
+  if (file.is_open())
+  {
+    string line;
+    while (getline(file, line))
+    {
+      string idStr = to_string(id);
+      if (line.find(idStr) != string::npos)
+      {
+        return true;
+      }
+    }
+  }
+  else
+  {
+    cout << "Unable to open file" << endl;
+  }
+  return false;
 }
