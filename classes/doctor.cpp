@@ -399,3 +399,17 @@ void Doctor::printDoctor(Doctor d)
   cout << "Email: " << d.getEmail() << endl;
   cout << "Address: " << d.getAddress() << endl;
 }
+
+void Doctor::printDoctor(vector<Doctor> doctors)
+{
+  for (int i = 0; i < doctors.size(); i++)
+  {
+    cout << "ID: " << doctors[i].getId() << endl;
+    cout << "Name: " << doctors[i].getName() << endl;
+    cout << "Specialization: " << doctors[i].getSpecialization() << endl;
+    cout << "Experience: " << doctors[i].getExperience() << endl;
+    cout << "Phone: " << doctors[i].getPhone() << endl;
+    cout << "Email: " << doctors[i].getEmail() << endl;
+    cout << "Address: " << doctors[i].getAddress() << endl;
+  }
+}
