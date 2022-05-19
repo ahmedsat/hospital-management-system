@@ -257,3 +257,70 @@ Doctor Doctor::updateDoctor(int id, Doctor d)
   }
   return Doctor();
 }
+
+Doctor Doctor::searchDoctorById(int id)
+{
+  ifstream file;
+  file.open(DoctorPath);
+  if (file.is_open())
+  {
+    string line;
+    while (getline(file, line))
+    {
+      string idStr = to_string(id);
+      if (line.find(idStr) != string::npos)
+      {
+        string id, name, specialization, experience, phone, email, address;
+        int i = 0;
+        while (line[i] != '|')
+        {
+          id += line[i];
+          i++;
+        }
+        i++;
+        while (line[i] != '|')
+        {
+          name += line[i];
+          i++;
+        }
+        i++;
+        while (line[i] != '|')
+        {
+          specialization += line[i];
+          i++;
+        }
+        i++;
+        while (line[i] != '|')
+        {
+          experience += line[i];
+          i++;
+        }
+        i++;
+        while (line[i] != '|')
+        {
+          phone += line[i];
+          i++;
+        }
+        i++;
+        while (line[i] != '|')
+        {
+          email += line[i];
+          i++;
+        }
+        i++;
+        while (line[i] != '|')
+        {
+          address += line[i];
+          i++;
+        }
+        Doctor d(stoi(id), name, specialization, experience, phone, email, address);
+        return d;
+      }
+    }
+  }
+  else
+  {
+    cout << "Unable to open file" << endl;
+  }
+  return Doctor();
+}
