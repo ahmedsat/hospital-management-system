@@ -1,4 +1,5 @@
-#include "classes/controller.cpp"
+#include "classes/controller.h"
+
 int main(int argc, char const *argv[])
 {
   Controller c;

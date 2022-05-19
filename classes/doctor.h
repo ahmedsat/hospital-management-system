@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 using namespace std;
 
 string DoctorPath = "/home/ahmedsat/c++/hospital/Doctors.txt";
@@ -38,9 +39,9 @@ public:
   Doctor removeDoctor(int);
   Doctor updateDoctor(int, Doctor);
   Doctor searchDoctorById(int);
-  Doctor *getAllDoctors();
+  vector<Doctor> getAllDoctors();
   void printDoctor(Doctor);
-  void printDoctor(Doctor *);
+  void printDoctor(vector<Doctor>);
 };
 
 Doctor::Doctor()

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-// import the helper functions
-#include "../helperFunctions.cpp"
+#include "doctor.h"
+#include "../helperFunctions.h"
 using namespace std;
 
 // controller class for user input and output
